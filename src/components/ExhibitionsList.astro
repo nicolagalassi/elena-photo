@@ -1,25 +1,49 @@
 ---
 import { getEntry } from 'astro:content';
+
+// 1. Recuperiamo i dati grezzi
 const exhibitionsEntry = await getEntry('exhibitions', 'list');
-const exhibitions = exhibitionsEntry ? exhibitionsEntry.data.items : [];
+const rawItems = exhibitionsEntry ? exhibitionsEntry.data.items : [];
+
+// 2. Raggruppiamo per anno usando JavaScript
+// Creiamo un oggetto tipo: { "2022": ["Mostra A", "Mostra B"], "2021": ["Mostra C"] }
+const exhibitionsByYear = rawItems.reduce((acc: Record<string, typeof rawItems>, item) => {
+    const year = item.year;
+    if (!acc[year]) {
+        acc[year] = [];
+    }
+    acc[year].push(item);
+    return acc;
+}, {});
+
+// 3. Estraiamo gli anni e li ordiniamo dal più recente al più vecchio (DESC)
+// Se li vuoi dal più vecchio al più recente, cambia (b - a) in (a - b)
+const sortedYears = Object.keys(exhibitionsByYear).sort((a, b) => Number(b) - Number(a));
 ---
 
 <section class="max-w-4xl mx-auto px-4 py-16 text-center">
-    <h3 class="text-lg font-bold uppercase tracking-widest mb-12 text-text-main transition-colors">
+    
+    <h3 class="text-3xl md:text-4xl font-serif-title uppercase tracking-widest mb-16 text-text-main transition-colors">
         Mostre e Riconoscimenti
     </h3>
 
-    <div class="space-y-8">
-        {exhibitions.map((item) => (
-            <div class="flex flex-col md:flex-row justify-center items-baseline gap-1 md:gap-4 text-sm md:text-base">
-                <span class="font-bold whitespace-nowrap text-text-main uppercase transition-colors">
-                    ANNO {item.year}
-                </span>
-                <span class="hidden md:inline text-stone-400">-</span>
-                <span class="text-text-muted uppercase tracking-wide transition-colors">
-                    {item.description}
-                </span>
+    <div class="space-y-16"> {sortedYears.map((year) => (
+            <div class="relative">
+                
+                <h4 class="text-2xl font-serif-title text-text-main mb-6 border-b border-stone-200 dark:border-stone-800 pb-2 inline-block px-8 transition-colors">
+                    {year}
+                </h4>
+
+                <div class="space-y-3">
+                    {exhibitionsByYear[year].map((item) => (
+                        <div class="text-sm md:text-base text-text-muted font-sans font-light tracking-wide uppercase transition-colors">
+                            {item.description}
+                        </div>
+                    ))}
+                </div>
+
             </div>
         ))}
+
     </div>
 </section>

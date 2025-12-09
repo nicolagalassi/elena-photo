@@ -6,19 +6,20 @@ interface Props { lang?: 'it' | 'en'; }
 const { lang = 'it' } = Astro.props;
 ---
 
-<section id="bio" class="max-w-5xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center md:items-start">
-        <div class="w-full max-w-[250px] md:max-w-none md:w-1/4 shrink-0">
-            <div class="aspect-square bg-bg-secondary overflow-hidden relative shadow-lg rotate-3 transition-all hover:rotate-0 duration-500">
-                <div class="absolute inset-0 pointer-events-none z-10 transition-colors"></div>
+<section id="bio" class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center">
+        
+        <div class="w-full max-w-[220px] shrink-0">
+            <div class="aspect-square bg-bg-secondary overflow-hidden shadow-lg rotate-3 transition-transform hover:rotate-0 duration-500 rounded-sm">
                 <Image src={bioImg} alt="Elena Ghini" class="w-full h-full object-cover" />
             </div>
         </div>
 
-        <div class="w-full md:flex-1 flex flex-col justify-center text-center md:text-left">
+        <div class="w-full max-w-2xl flex flex-col text-center md:text-left">
              <h2 class="text-3xl font-serif-title text-text-main mb-8 uppercase tracking-widest transition-colors">
                 Elena Ghini
             </h2>
+            
             <div class="text-text-muted leading-relaxed space-y-6 text-sm md:text-base font-sans font-light tracking-wide transition-colors">
                 {lang === 'it' ? (
                     <>

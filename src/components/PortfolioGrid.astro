@@ -7,14 +7,26 @@ const { lang = 'it' } = Astro.props;
 const projects = await getCollection('portfolio');
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12">
   {projects.map((project) => (
-    <a href={lang === 'it' ? `/portfolio/${project.slug}` : `/en/portfolio/${project.slug}`} class="group block text-center">
-      <div class="overflow-hidden bg-stone-200 dark:bg-stone-800 aspect-square mb-6">
+    
+    /* CAMBIAMENTI ITEM:
+      1. w-64 (circa 250px) e md:w-72. Questo le rende molto più piccole 
+         rispetto a prima (che erano larghe 1/3 di schermo).
+    */
+    <a href={lang === 'it' ? `/portfolio/${project.slug}` : `/en/portfolio/${project.slug}`} class="group block text-center w-52 md:w-64">
+      
+      <div class="overflow-hidden bg-bg-secondary aspect-square mb-5 rounded-sm shadow-sm">
           {project.data.coverImage && (
-            <Image src={project.data.coverImage} alt={project.data.title_it} width={600} class="object-cover w-full h-full group-hover:opacity-90 transition-opacity duration-300"/>
+            <Image 
+              src={project.data.coverImage} 
+              alt={project.data.title_it} 
+              width={400} 
+              class="object-cover w-full h-full group-hover:scale-105 group-hover:opacity-90 transition-all duration-500"
+            />
           )}
       </div>
+      
       <h3 class="text-base font-sans font-medium text-text-muted group-hover:text-text-main transition-colors uppercase tracking-[0.2em]">
         {lang === 'it' ? project.data.title_it : (project.data.title_en || project.data.title_it)}
       </h3>
