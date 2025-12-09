@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+interface Props { lang?: 'it' | 'en'; }
+const { lang = 'it' } = Astro.props;
+const projects = await getCollection('portfolio');
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+  {projects.map((project) => (
+    <a href={lang === 'it' ? `/portfolio/${project.slug}` : `/en/portfolio/${project.slug}`} class="group block text-center">
+      <div class="overflow-hidden bg-stone-200 dark:bg-stone-800 aspect-square mb-6">
+          {project.data.coverImage && (
+            <Image src={project.data.coverImage} alt={project.data.title_it} width={600} class="object-cover w-full h-full group-hover:opacity-90 transition-opacity duration-300"/>
+          )}
+      </div>
+      <h3 class="text-base font-sans font-medium text-text-muted group-hover:text-text-main transition-colors uppercase tracking-[0.2em]">
+        {lang === 'it' ? project.data.title_it : (project.data.title_en || project.data.title_it)}
+      </h3>
+    </a>
+  ))}
+</div>

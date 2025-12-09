@@ -1,0 +1,53 @@
+---
+// src/components/Navbar.astro
+import { getCollection } from 'astro:content';
+
+interface Props {
+  lang?: 'it' | 'en';
+}
+
+const { lang = 'it' } = Astro.props;
+
+// Il componente si recupera i dati da solo!
+const galleries = await getCollection('portfolio');
+
+// Logica per i link
+const homeLink = lang === 'it' ? '/' : '/en';
+const portfolioPrefix = lang === 'it' ? '/portfolio/' : '/en/portfolio/';
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-stone-100">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    
+    <a href={homeLink} class="text-xl font-bold tracking-widest uppercase text-stone-900">
+      ELENA GHINI PHOTO
+    </a>
+
+    <nav class="hidden md:flex gap-8 items-center text-sm font-medium">
+      <a href={homeLink} class="hover:text-stone-500 transition-colors">Home</a>
+      
+      <div class="relative group cursor-pointer py-4">
+        <span class="hover:text-stone-500 transition-colors flex items-center gap-1">
+          Portfolio 
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        
+        <div class="absolute left-0 top-full w-56 bg-white border border-stone-100 shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+          {galleries.map((project) => (
+            <a 
+              href={`${portfolioPrefix}${project.slug}`} 
+              class="block px-4 py-2 hover:bg-stone-50 text-stone-600 truncate"
+            >
+              {lang === 'it' ? project.data.title_it : (project.data.title_en || project.data.title_it)}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="border-l pl-4 border-stone-300 flex gap-2">
+        <a href="/" class={`text-xs ${lang==='it' ? 'font-bold text-black' : 'text-stone-400 hover:text-stone-600'}`}>IT</a>
+        <a href="/en" class={`text-xs ${lang==='en' ? 'font-bold text-black' : 'text-stone-400 hover:text-stone-600'}`}>EN</a>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* DEFINIZIONE COLORI E VARIABILI */
+:root {
+  /* LIGHT MODE */
+  --bg-primary: #ffffff;       /* Bianco */
+  --bg-secondary: #f5f5f4;     /* Stone-100 (Grigio chiaro) */
+  --bg-dark: #1c1917;          /* Stone-900 (Footer scuro) */
+  
+  --text-main: #1c1917;        /* Stone-900 (Testo scuro) */
+  --text-muted: #57534e;       /* Stone-600 (Testo secondario) */
+  --text-inv: #ffffff;         /* Testo su fondo scuro */
+}
+
+/* DARK MODE */
+.dark {
+  --bg-primary: #0c0a09;       /* Stone-950 (Quasi nero) */
+  --bg-secondary: #1c1917;     /* Stone-900 (Grigio scuro) */
+  --bg-dark: #000000;          /* Nero assoluto (Footer) */
+  
+  --text-main: #ffffff;        /* Bianco */
+  --text-muted: #a8a29e;       /* Stone-400 */
+  --text-inv: #a8a29e;         /* Testo su fondo scuro */
+}
+
+/* STILI BASE */
+@layer base {
+  body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    @apply antialiased font-light transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, .font-serif-title {
+    font-family: 'DM Serif Text', serif;
+    letter-spacing: 0.05em;
+  }
+
+  nav a, button, .btn {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* CLASSE PER LE QUOTE */
+.font-quote {
+  font-family: 'Rouge Script', cursive;
+  font-weight: 400;
+  font-size: 3.2rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* UTILITY CLASSES PER I COLORI (Per usarle nell'HTML) */
+@layer utilities {
+  .bg-bg-primary { background-color: var(--bg-primary); }
+  .bg-bg-secondary { background-color: var(--bg-secondary); }
+  .bg-bg-dark { background-color: var(--bg-dark); }
+  
+  .text-text-main { color: var(--text-main); }
+  .text-text-muted { color: var(--text-muted); }
+  .text-bg-primary { color: var(--bg-primary); }     /* Serve per le onde */
+  .text-bg-secondary { color: var(--bg-secondary); } /* Serve per le onde */
+  .text-bg-dark { color: var(--bg-dark); }           /* Serve per le onde */
+}

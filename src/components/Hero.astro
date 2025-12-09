@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+// Assicurati di avere questa immagine in src/assets/
+import heroImg from '../assets/hero.jpg'; 
+---
+
+<section class="py-8 md:py-12">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="aspect-3/2 bg-stone-100 overflow-hidden">
+             <Image 
+                src={heroImg} 
+                alt="Elena Ghini Photography" 
+                class="w-full h-full object-cover"
+                loading="eager"
+             />
+        </div>
+    </div>
+</section>

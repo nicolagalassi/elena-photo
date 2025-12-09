@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import bioImg from '../assets/bio.jpg'; 
+
+interface Props { lang?: 'it' | 'en'; }
+const { lang = 'it' } = Astro.props;
+---
+
+<section id="bio" class="max-w-5xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center md:items-start">
+        <div class="w-full max-w-[250px] md:max-w-none md:w-1/4 shrink-0">
+            <div class="aspect-square bg-bg-secondary overflow-hidden relative shadow-lg rotate-3 transition-all hover:rotate-0 duration-500">
+                <div class="absolute inset-0 pointer-events-none z-10 transition-colors"></div>
+                <Image src={bioImg} alt="Elena Ghini" class="w-full h-full object-cover" />
+            </div>
+        </div>
+
+        <div class="w-full md:flex-1 flex flex-col justify-center text-center md:text-left">
+             <h2 class="text-3xl font-serif-title text-text-main mb-8 uppercase tracking-widest transition-colors">
+                Elena Ghini
+            </h2>
+            <div class="text-text-muted leading-relaxed space-y-6 text-sm md:text-base font-sans font-light tracking-wide transition-colors">
+                {lang === 'it' ? (
+                    <>
+                        <p>NASCE A LUGO DI ROMAGNA NEL 1972, INIZIA A FOTOGRAFARE SIN DA ADOLESCENTE E, DAL 2012, INTENSIFICA LA SUA PASSIONE, DEDICANDOSI ALLA FOTOGRAFIA DI SCENA (TEATRO E DANZA) E IN SEGUITO ALLA RITRATTISTICA E AL NUDO ARTISTICO.</p>
+                        <p>PROPRIO DALLA DANZA, E DALL'AMORE PER L'ARTE, PRENDE SPUNTO PER SVILUPPARE I SUOI PROGETTI FOTOGRAFICI E DARE VITA AL PROPRIO MONDO INTERIORE, SPERIMENTANDO IN OGNI SITUAZIONE SOPRATTUTTO ATTRAVERSO LA LUCE CHE INTERPRETA IN MODO PERSONALE.</p>
+                    </>
+                ) : (
+                    <>
+                        <p>BORN IN LUGO DI ROMAGNA IN 1972, SHE STARTED PHOTOGRAPHING AS A TEENAGER. SINCE 2012, SHE HAS INTENSIFIED HER PASSION, DEDICATING HERSELF TO STAGE PHOTOGRAPHY (THEATRE AND DANCE), AND LATER TO PORTRAITURE AND ARTISTIC NUDE.</p>
+                        <p>DRAWING INSPIRATION FROM DANCE AND HER LOVE FOR ART, SHE DEVELOPS HER PHOTOGRAPHIC PROJECTS TO BRING HER INNER WORLD TO LIFE, EXPERIMENTING IN EVERY SITUATION, ESPECIALLY THROUGH LIGHT, WHICH SHE INTERPRETS IN A DEEPLY PERSONAL WAY.</p>
+                    </>
+                )}
+            </div>
+        </div>
+    </div>
+</section>

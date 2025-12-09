@@ -1,16 +1,44 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Bio from '../components/Bio.astro';
+import PortfolioGrid from '../components/PortfolioGrid.astro';
+import ExhibitionsList from '../components/ExhibitionsList.astro';
+import QuoteSection from '../components/QuoteSection.astro';
+import WaveSeparator from '../components/WaveSeparator.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Elena Ghini Photography" lang="it">
+  
+  <div class="bg-bg-primary transition-colors duration-300">
+      <Hero />
+      <WaveSeparator color="secondary" />
+  </div>
+
+  <div class="bg-bg-secondary transition-colors duration-300">
+      <QuoteSection text="Ogni volta che fotografo incornicio parti di me" />
+      <div class="pb-12">
+        <Bio />
+      </div>
+      <WaveSeparator color="primary" />
+  </div>
+
+  <div class="bg-bg-primary transition-colors duration-300">
+      <QuoteSection text="Mi lascio contaminare dalla Natura, per farla mia in fotografia" />
+      
+      <div id="portfolio" class="max-w-6xl mx-auto px-4 pb-24">
+        <h2 class="text-4xl md:text-5xl text-center mb-16 text-text-main font-serif-title uppercase transition-colors">
+            Portfolio
+        </h2>
+        <PortfolioGrid lang="it" />
+      </div>
+
+      <WaveSeparator color="secondary" />
+  </div>
+
+  <div class="bg-bg-secondary pt-12 transition-colors duration-300">
+      <ExhibitionsList />
+      <WaveSeparator color="dark" />
+  </div>
+
+</Layout>
