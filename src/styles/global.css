@@ -2,36 +2,36 @@
 
 /* DEFINIZIONE COLORI E VARIABILI */
 :root {
-  /* --- LIGHT MODE (Toni Teal e Crema) --- */
+  /* --- LIGHT MODE (Pulizia e Toni Ghiaccio) --- */
   
   /* Sfondi */
-  --bg-primary: #F2EFE7;       /* Crema Sabbia */
-  --bg-secondary: #9ACBD0;     /* Acqua Chiaro */
-  --bg-dark: #006A71;          /* Petrolio Scuro (Footer) */
+  --bg-primary: #ffffff;       /* Bianco Puro (per far risaltare le foto) */
+  --bg-secondary: #BDD8E9;     /* Azzurro Ghiaccio (dalla palette) */
+  --bg-dark: #001D39;          /* Navy Profondo (dalla palette - Footer) */
   
   /* Testi */
-  --text-main: #006A71;        /* Petrolio Scuro */
-  --text-muted: #48A6A7;       /* Teal Medio */
-  --text-inv: #F2EFE7;         /* Crema (Testo su footer scuro) */
+  --text-main: #001D39;        /* Navy Profondo (Massimo contrasto) */
+  --text-muted: #49769F;       /* Blu Medio/Grigio (dalla palette) */
+  --text-inv: #BDD8E9;         /* Azzurro chiaro (Testo su footer scuro) */
   
   /* Accenti */
-  --accent: #48A6A7;           
+  --accent: #4E8EA2;           /* Teal (dalla palette) */
 }
 
-/* --- DARK MODE (Abissi e Oro) --- */
+/* --- DARK MODE (Profondità Marina) --- */
 .dark {
   /* Sfondi */
-  --bg-primary: #27445D;       /* Blu Abisso */
-  --bg-secondary: #497D74;     /* Verde Mare Profondo */
-  --bg-dark: #000000;          /* Nero (Footer) */
+  --bg-primary: #001D39;       /* Navy Profondo (dalla palette) */
+  --bg-secondary: #0A4174;     /* Blu Oltremare (dalla palette) */
+  --bg-dark: #000000;          /* Nero Assoluto (Footer) */
   
   /* Testi */
-  --text-main: #EFE9D5;        /* Crema Chiaro */
-  --text-muted: #71BBB2;       /* Teal Luminoso */
-  --text-inv: #EFE9D5;         /* Crema Chiaro */
+  --text-main: #BDD8E9;        /* Azzurro Ghiaccio (dalla palette) */
+  --text-muted: #6EA2B3;       /* Teal Chiaro (dalla palette) */
+  --text-inv: #BDD8E9;         /* Azzurro Ghiaccio */
   
   /* Accenti */
-  --accent: #71BBB2;
+  --accent: #7BBDE8;           /* Celeste acceso (dalla palette) */
 }
 
 /* STILI BASE */
@@ -59,7 +59,7 @@
 .font-quote {
   font-family: 'Rouge Script', cursive;
   font-weight: 400;
-  font-size: 3.5em;
+  font-size: 3.5rem;
   -webkit-font-smoothing: antialiased;
 }
 
