@@ -1,23 +1,16 @@
 ---
 import { getEntry } from 'astro:content';
 
-// 1. Recuperiamo i dati grezzi
 const exhibitionsEntry = await getEntry('exhibitions', 'list');
 const rawItems = exhibitionsEntry ? exhibitionsEntry.data.items : [];
 
-// 2. Raggruppiamo per anno usando JavaScript
-// Creiamo un oggetto tipo: { "2022": ["Mostra A", "Mostra B"], "2021": ["Mostra C"] }
 const exhibitionsByYear = rawItems.reduce((acc: Record<string, typeof rawItems>, item) => {
     const year = item.year;
-    if (!acc[year]) {
-        acc[year] = [];
-    }
+    if (!acc[year]) { acc[year] = []; }
     acc[year].push(item);
     return acc;
 }, {});
 
-// 3. Estraiamo gli anni e li ordiniamo dal più recente al più vecchio (DESC)
-// Se li vuoi dal più vecchio al più recente, cambia (b - a) in (a - b)
 const sortedYears = Object.keys(exhibitionsByYear).sort((a, b) => Number(b) - Number(a));
 ---
 
@@ -27,10 +20,12 @@ const sortedYears = Object.keys(exhibitionsByYear).sort((a, b) => Number(b) - Nu
         Mostre e Riconoscimenti
     </h3>
 
-    <div class="space-y-16"> {sortedYears.map((year) => (
+    <div class="space-y-16">
+        
+        {sortedYears.map((year) => (
             <div class="relative">
                 
-                <h4 class="text-2xl font-serif-title text-text-main mb-6 border-b border-stone-200 dark:border-stone-800 pb-2 inline-block px-8 transition-colors">
+                <h4 class="text-2xl font-serif-title text-text-main mb-6 inline-block px-8 transition-colors">
                     {year}
                 </h4>
 

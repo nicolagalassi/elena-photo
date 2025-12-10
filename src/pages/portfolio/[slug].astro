@@ -3,31 +3,36 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
-// Genera i percorsi statici per ogni progetto
+// Generazione percorsi statici
 export async function getStaticPaths() {
   const projects = await getCollection('portfolio');
+  
   return projects.map(project => ({
-    params: { slug: project.slug },
+    // ERRORE ERA QUI: 'slug: project.slug' -> CAMBIA IN 'slug: project.id'
+    params: { slug: project.id }, 
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
-const { Content } = await project.render(); // Renderizza Markdoc
+
+// Gestione lingua URL
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/en') ? 'en' : 'it';
+
+// Recupero dati
+const title = lang === 'it' ? project.data.title_it : (project.data.title_en || project.data.title_it);
 ---
 
-<Layout title={`${project.data.title_it}`} lang="it">
+<Layout title={`${title} | Elena Ghini`} lang={lang}>
   
   <article class="max-w-6xl mx-auto px-4 py-12">
     
-    <header class="text-center mb-12">
-      <h1 class="text-3xl md:text-5xl font-bold mb-4 text-stone-800">{project.data.title_it}</h1>
-      <p class="text-stone-500 max-w-2xl mx-auto">{project.data.description_it}</p>
+    <header class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-serif-title text-text-main uppercase tracking-widest transition-colors">
+        {title}
+      </h1>
     </header>
-
-    <div class="prose prose-stone mx-auto mb-16 text-center max-w-3xl">
-      <Content />
-    </div>
 
     {project.data.gallery && project.data.gallery.length > 0 ? (
       <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
@@ -35,15 +40,15 @@ const { Content } = await project.render(); // Renderizza Markdoc
           <div class="break-inside-avoid">
             <Image 
               src={imagePath} 
-              alt="" 
+              alt={title} 
               width={800} 
-              class="w-full rounded-md hover:opacity-95 transition-opacity"
+              class="w-full rounded-sm hover:opacity-95 transition-opacity"
             />
           </div>
         ))}
       </div>
     ) : (
-      <p class="text-center text-stone-400">Nessuna immagine in questa galleria.</p>
+      <p class="text-center text-text-muted">Nessuna immagine in questa galleria.</p>
     )}
 
   </article>

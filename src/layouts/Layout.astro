@@ -24,13 +24,14 @@ const { title, lang = 'it' } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&family=Rouge+Script&display=swap" rel="stylesheet">
   </head>
-  <body class="flex flex-col min-h-screen bg-white">
+  
+  <body class="flex flex-col min-h-screen bg-bg-primary text-text-main transition-colors duration-300">
     
     <SocialBar />
-
+    
     <Header lang={lang} />
 
-    <main class="grow">
+    <main class="flex-grow">
       <slot />
     </main>
 

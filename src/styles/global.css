@@ -2,25 +2,36 @@
 
 /* DEFINIZIONE COLORI E VARIABILI */
 :root {
-  /* LIGHT MODE */
-  --bg-primary: #ffffff;       /* Bianco */
-  --bg-secondary: #f5f5f4;     /* Stone-100 (Grigio chiaro) */
-  --bg-dark: #1c1917;          /* Stone-900 (Footer scuro) */
+  /* --- LIGHT MODE (Toni Teal e Crema) --- */
   
-  --text-main: #1c1917;        /* Stone-900 (Testo scuro) */
-  --text-muted: #57534e;       /* Stone-600 (Testo secondario) */
-  --text-inv: #ffffff;         /* Testo su fondo scuro */
+  /* Sfondi */
+  --bg-primary: #F2EFE7;       /* Crema Sabbia */
+  --bg-secondary: #9ACBD0;     /* Acqua Chiaro */
+  --bg-dark: #006A71;          /* Petrolio Scuro (Footer) */
+  
+  /* Testi */
+  --text-main: #006A71;        /* Petrolio Scuro */
+  --text-muted: #48A6A7;       /* Teal Medio */
+  --text-inv: #F2EFE7;         /* Crema (Testo su footer scuro) */
+  
+  /* Accenti */
+  --accent: #48A6A7;           
 }
 
-/* DARK MODE */
+/* --- DARK MODE (Abissi e Oro) --- */
 .dark {
-  --bg-primary: #0c0a09;       /* Stone-950 (Quasi nero) */
-  --bg-secondary: #1c1917;     /* Stone-900 (Grigio scuro) */
-  --bg-dark: #000000;          /* Nero assoluto (Footer) */
+  /* Sfondi */
+  --bg-primary: #27445D;       /* Blu Abisso */
+  --bg-secondary: #497D74;     /* Verde Mare Profondo */
+  --bg-dark: #000000;          /* Nero (Footer) */
   
-  --text-main: #ffffff;        /* Bianco */
-  --text-muted: #a8a29e;       /* Stone-400 */
-  --text-inv: #a8a29e;         /* Testo su fondo scuro */
+  /* Testi */
+  --text-main: #EFE9D5;        /* Crema Chiaro */
+  --text-muted: #71BBB2;       /* Teal Luminoso */
+  --text-inv: #EFE9D5;         /* Crema Chiaro */
+  
+  /* Accenti */
+  --accent: #71BBB2;
 }
 
 /* STILI BASE */
@@ -29,7 +40,7 @@
     font-family: 'Roboto Condensed', sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-main);
-    @apply antialiased font-light transition-colors duration-300;
+    @apply antialiased font-light transition-colors duration-500;
   }
 
   h1, h2, h3, h4, .font-serif-title {
@@ -48,11 +59,11 @@
 .font-quote {
   font-family: 'Rouge Script', cursive;
   font-weight: 400;
-  font-size: 3.2rem;
+  font-size: 3.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-/* UTILITY CLASSES PER I COLORI (Per usarle nell'HTML) */
+/* UTILITY CLASSES */
 @layer utilities {
   .bg-bg-primary { background-color: var(--bg-primary); }
   .bg-bg-secondary { background-color: var(--bg-secondary); }
@@ -60,7 +71,10 @@
   
   .text-text-main { color: var(--text-main); }
   .text-text-muted { color: var(--text-muted); }
-  .text-bg-primary { color: var(--bg-primary); }     /* Serve per le onde */
-  .text-bg-secondary { color: var(--bg-secondary); } /* Serve per le onde */
-  .text-bg-dark { color: var(--bg-dark); }           /* Serve per le onde */
+  .text-text-inv { color: var(--text-inv); }
+  
+  /* Colori per le onde */
+  .text-bg-primary { color: var(--bg-primary); }
+  .text-bg-secondary { color: var(--bg-secondary); }
+  .text-bg-dark { color: var(--bg-dark); }
 }

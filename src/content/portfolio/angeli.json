@@ -1,0 +1,15 @@
+{
+  "title": "angeli",
+  "title_it": "Angeli",
+  "title_en": "Angeli",
+  "coverImage": "@/assets/portfolio/angeli/coverImage.jpg",
+  "gallery": [
+    "@/assets/portfolio/angeli/gallery/foto1.jpg",
+    "@/assets/portfolio/angeli/gallery/foto2.jpg",
+    "@/assets/portfolio/angeli/gallery/foto3.jpg",
+    "@/assets/portfolio/angeli/gallery/foto4.jpg",
+    "@/assets/portfolio/angeli/gallery/foto5.jpg",
+    "@/assets/portfolio/angeli/gallery/foto6.jpg",
+    "@/assets/portfolio/angeli/gallery/foto7.jpg"
+  ]
+}
