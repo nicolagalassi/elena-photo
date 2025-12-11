@@ -59,8 +59,12 @@
 .font-quote {
   font-family: 'Rouge Script', cursive;
   font-weight: 400;
-  font-size: 3.5rem;
+  font-size: 2rem;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.2;
+  @media (min-width: 768px) {
+    font-size: 3.5rem;
+  }
 }
 
 /* UTILITY CLASSES */
@@ -78,3 +82,4 @@
   .text-bg-secondary { color: var(--bg-secondary); }
   .text-bg-dark { color: var(--bg-dark); }
 }
+

@@ -1,7 +1,7 @@
 {
   "title": "natura",
   "title_it": "Natura",
-  "title_en": "Natura",
+  "title_en": "Nature",
   "coverImage": "@/assets/portfolio/natura/coverImage.jpg",
   "gallery": [
     "@/assets/portfolio/natura/gallery/foto1.jpg",

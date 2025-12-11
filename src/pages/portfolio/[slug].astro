@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import WaveSeparator from '../../components/WaveSeparator.astro'; // <--- 1. Importa l'onda
+import WaveSeparator from '../../components/WaveSeparator.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('portfolio');
@@ -21,27 +21,42 @@ const coverImageSrc = project.data.coverImage ? project.data.coverImage.src : un
 
 <Layout title={`${title} | Elena Ghini`} lang={lang} image={coverImageSrc}>
   
-  <article class="pt-12 pb-0"> <div class="max-w-6xl mx-auto px-4 mb-16">
+  <article class="pt-12 pb-0 bg-bg-primary transition-colors duration-500">
+    
+    <div class="max-w-6xl mx-auto px-4 mb-16">
         <header class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-serif-title text-text-main uppercase tracking-widest transition-colors">
-            {title}
-        </h1>
+          <h1 class="text-4xl md:text-5xl font-serif-title text-text-main uppercase tracking-widest transition-colors">
+              {title}
+          </h1>
         </header>
 
         {project.data.gallery && project.data.gallery.length > 0 ? (
-        <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        
+        /* MASONRY NATIVO (Stile Pinterest)
+           - columns-1: 1 colonna su mobile
+           - md:columns-2: 2 colonne su tablet
+           - lg:columns-3: 3 colonne su desktop
+           - gap-6: Spazio laterale tra le colonne
+           - space-y-6: Non lo usiamo qui, usiamo il margin-bottom sul singolo elemento per stabilità
+        */
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-6">
             {project.data.gallery.map((imagePath) => (
-            <div class="break-inside-avoid">
+              
+              /* CONTENITORE FOTO
+                 - break-inside-avoid: FONDAMENTALE. Vieta alla foto di spezzarsi tra due colonne.
+                 - mb-6: Crea lo spazio verticale sotto ogni foto (uguale al gap-6 orizzontale).
+              */
+              <div class="break-inside-avoid mb-6">
                 <Image 
-                src={imagePath} 
-                alt={title} 
-                widths={[400, 800, 1200]}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                format="webp"
-                quality={80}
-                class="w-full rounded-sm hover:opacity-95 transition-opacity"
+                  src={imagePath} 
+                  alt={title} 
+                  widths={[400, 800]}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  format="webp"
+                  quality={80}
+                  class="w-full h-auto rounded-sm transition-transform duration-700 hover:scale-[1.02] shadow-sm"
                 />
-            </div>
+              </div>
             ))}
         </div>
         ) : (

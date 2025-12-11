@@ -12,7 +12,7 @@ const switchLangLabel = lang === 'it' ? 'EN' : 'IT';
 const menuItems = [ { label: 'Home', href: homeLink }, { label: 'Portfolio', href: portfolioLink } ];
 ---
 
-<header class="py-6 bg-bg-primary transition-colors duration-500">
+<header class="py-6 bg-bg-secondary transition-colors duration-500">
   <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
     
     <a href={homeLink} class="text-3xl font-serif-title text-text-main uppercase tracking-wider transition-colors">
@@ -28,7 +28,7 @@ const menuItems = [ { label: 'Home', href: homeLink }, { label: 'Portfolio', hre
         </ul>
         </nav>
 
-        <div class="flex items-center gap-4 border-l border-black/10 dark:border-white/10 pl-6">
+        <div class="flex items-center gap-4 border-l border-text-main/10 pl-6">
             <a href={switchLangLink} class="text-xs font-bold text-text-muted hover:text-text-main transition-colors">
                 {switchLangLabel}
             </a>
