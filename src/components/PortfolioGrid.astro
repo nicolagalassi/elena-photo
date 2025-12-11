@@ -9,15 +9,26 @@ const projects = await getCollection('portfolio');
 
 <div class="flex flex-wrap justify-center gap-x-8 gap-y-12">
   {projects.map((project) => (
-    
     <a href={lang === 'it' ? `/portfolio/${project.id}` : `/en/portfolio/${project.id}`} class="group block text-center w-64 md:w-72">
       
-      <div class="overflow-hidden bg-bg-secondary aspect-square mb-5 rounded-sm shadow-sm">
+      <div class="overflow-hidden bg-bg-secondary aspect-square mb-5 rounded-sm shadow-sm relative">
           {project.data.coverImage && (
             <Image 
               src={project.data.coverImage} 
               alt={project.data.title_it} 
-              width={400} 
+              
+              /* OTTIMIZZAZIONE 1: Dimensioni precise */
+              /* Le card sono larghe circa 300px. Mettiamo 600px per schermi Retina (alta densità) */
+              width={600} 
+              
+              /* OTTIMIZZAZIONE 2: Formati Moderni */
+              /* Prima prova AVIF (leggerissimo), se il browser non lo legge usa WebP */
+              formats={['avif', 'webp']}
+              
+              /* OTTIMIZZAZIONE 3: Qualità */
+              /* 'mid' o 80 è un ottimo compromesso per le miniature */
+              quality="mid"
+
               class="object-cover w-full h-full group-hover:scale-105 group-hover:opacity-90 transition-all duration-500"
             />
           )}

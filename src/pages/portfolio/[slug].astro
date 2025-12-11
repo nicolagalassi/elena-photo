@@ -22,9 +22,12 @@ const lang = currentPath.startsWith('/en') ? 'en' : 'it';
 
 // Recupero dati
 const title = lang === 'it' ? project.data.title_it : (project.data.title_en || project.data.title_it);
+// Recuperiamo l'URL dell'immagine di copertina
+// Astro Assets gestisce le immagini come oggetti, dobbiamo estrarre l'src
+const coverImageSrc = project.data.coverImage ? project.data.coverImage.src : undefined;
 ---
 
-<Layout title={`${title} | Elena Ghini`} lang={lang}>
+<Layout title={`${title} | Elena Ghini`} lang={lang} image={coverImageSrc}>
   
   <article class="max-w-6xl mx-auto px-4 py-12">
     
@@ -36,12 +39,15 @@ const title = lang === 'it' ? project.data.title_it : (project.data.title_en || 
 
     {project.data.gallery && project.data.gallery.length > 0 ? (
       <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-        {project.data.gallery.map((imagePath) => (
+        {project.data.gallery.map((imagePath, index) => (
           <div class="break-inside-avoid">
             <Image 
               src={imagePath} 
-              alt={title} 
-              width={800} 
+              alt={title}
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              format="webp"
+              quality={80}
               class="w-full rounded-sm hover:opacity-95 transition-opacity"
             />
           </div>
