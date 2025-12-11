@@ -4,7 +4,6 @@ import Hero from '../../components/Hero.astro';
 import Bio from '../../components/Bio.astro';
 import PortfolioGrid from '../../components/PortfolioGrid.astro';
 import ExhibitionsList from '../../components/ExhibitionsList.astro';
-import QuoteSection from '../../components/QuoteSection.astro';
 import WaveSeparator from '../../components/WaveSeparator.astro';
 ---
 
@@ -12,27 +11,32 @@ import WaveSeparator from '../../components/WaveSeparator.astro';
   
   <div class="bg-bg-primary transition-colors duration-300">
       <Hero />
-      <WaveSeparator color="secondary" />
+      <WaveSeparator color="secondary" position='top'/>
   </div>
 
   <div class="bg-bg-secondary transition-colors duration-300">
-      <QuoteSection text="Every time I photograph, I frame parts of myself" />
-      <div class="pb-12"><Bio lang="en" /></div>
-      <WaveSeparator color="primary" />
+      
+      <Bio lang="en" />
+      
+      <WaveSeparator color="primary" position='top'/>
   </div>
 
   <div class="bg-bg-primary transition-colors duration-300">
-      <QuoteSection text="I let Nature permeate me, to make it mine through photography" />
-      <div id="portfolio" class="max-w-6xl mx-auto px-4 pb-24">
-        <h2 class="text-4xl md:text-5xl text-center mb-16 text-text-main font-serif-title uppercase transition-colors">Portfolio</h2>
+      
+      <div id="portfolio" class="max-w-6xl mx-auto px-4 pt-12 pb-24">
+        <h2 class="text-4xl md:text-5xl text-center mb-16 text-text-main font-serif-title uppercase transition-colors">
+            Portfolio
+        </h2>
         <PortfolioGrid lang="en" />
       </div>
-      <WaveSeparator color="secondary" />
+
+      <WaveSeparator color="secondary" position='top' />
   </div>
 
   <div class="bg-bg-secondary pt-12 transition-colors duration-300">
       <ExhibitionsList />
-      <WaveSeparator color="dark" />
+      
+      <WaveSeparator color="dark" position='top'/>
   </div>
 
 </Layout>

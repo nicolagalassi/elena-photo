@@ -2,8 +2,9 @@
 interface Props { text: string; }
 const { text } = Astro.props;
 ---
+
 <section class="py-16 md:py-24 text-center px-4 overflow-hidden">
-    <p class="font-quote text-5xl md:text-7xl lg:text-8xl text-text-muted max-w-6xl mx-auto leading-[1.3] px-4 transition-colors">
+    <p class="font-quote text-on-secondary max-w-4xl mx-auto px-4 transition-colors">
         "{text}"
     </p>
 </section>

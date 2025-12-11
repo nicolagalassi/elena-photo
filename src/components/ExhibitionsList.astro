@@ -31,7 +31,8 @@ const sortedYears = Object.keys(exhibitionsByYear).sort((a, b) => Number(b) - Nu
 
                 <div class="space-y-3">
                     {exhibitionsByYear[year].map((item) => (
-                        <div class="text-sm md:text-base text-text-muted font-sans font-light tracking-wide uppercase transition-colors">
+                        /* MODIFICA QUI: text-on-secondary invece di text-text-muted */
+                        <div class="text-sm md:text-base text-on-secondary font-sans font-light tracking-wide uppercase transition-colors">
                             {item.description}
                         </div>
                     ))}

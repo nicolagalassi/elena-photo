@@ -4,23 +4,39 @@ import bioImg from '../assets/bio.jpg';
 
 interface Props { lang?: 'it' | 'en'; }
 const { lang = 'it' } = Astro.props;
+
+// Definiamo i testi delle quote qui
+const quote1 = lang === 'it' 
+    ? "Ogni volta che fotografo incornicio parti di me"
+    : "Every time I photograph, I frame parts of myself";
+
+const quote2 = lang === 'it'
+    ? "Mi lascio contaminare dalla Natura, per farla mia in fotografia"
+    : "I let Nature contaminate me, to make it mine in photography";
 ---
 
-<section id="bio" class="max-w-6xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center">
+<section id="bio" class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+    
+    <div class="text-center mb-16 px-4">
+        <p class="font-quote text-on-secondary opacity-90 transition-colors">
+            "{quote1}"
+        </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center mb-16">
         
         <div class="w-full max-w-[220px] shrink-0">
-            <div class="aspect-square bg-bg-secondary overflow-hidden shadow-xl rotate-3 transition-transform hover:rotate-0 duration-500 rounded-sm">
+            <div class="aspect-square bg-bg-primary overflow-hidden shadow-lg rotate-3 transition-transform hover:rotate-0 duration-500 rounded-sm">
                 <Image src={bioImg} alt="Elena Ghini" class="w-full h-full object-cover" />
             </div>
         </div>
 
         <div class="w-full max-w-2xl flex flex-col text-center md:text-left">
              <h2 class="text-3xl font-serif-title text-text-main mb-8 uppercase tracking-widest transition-colors">
-                Elena Ghini
+                {lang === 'it' ? 'Bio' : 'About Me'}
             </h2>
             
-            <div class="text-text-muted leading-relaxed space-y-6 text-sm md:text-base font-sans font-light tracking-wide transition-colors">
+            <div class="text-on-secondary leading-relaxed space-y-6 text-sm md:text-base font-sans font-light tracking-wide transition-colors">
                 {lang === 'it' ? (
                     <>
                         <p>NASCE A LUGO DI ROMAGNA NEL 1972, INIZIA A FOTOGRAFARE SIN DA ADOLESCENTE E, DAL 2012, INTENSIFICA LA SUA PASSIONE, DEDICANDOSI ALLA FOTOGRAFIA DI SCENA (TEATRO E DANZA) E IN SEGUITO ALLA RITRATTISTICA E AL NUDO ARTISTICO.</p>
@@ -35,4 +51,11 @@ const { lang = 'it' } = Astro.props;
             </div>
         </div>
     </div>
+
+    <div class="text-center mt-12 px-4">
+        <p class="font-quote text-on-secondary opacity-90 transition-colors">
+            "{quote2}"
+        </p>
+    </div>
+
 </section>
