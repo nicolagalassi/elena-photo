@@ -14,6 +14,6 @@ export default defineConfig({
   },
 
   integrations: [react(), markdoc(), keystatic()],
-  output: 'static',
+  output: 'server',
   adapter: netlify(),
 });
