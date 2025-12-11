@@ -1,9 +1,13 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  // LOGICA DI ACCESSO
+  storage: import.meta.env.DEV === true 
+    ? { kind: 'local' } // In locale (npm run dev) usa i file
+    : { 
+        kind: 'github', 
+        repo: 'nicolagalassi/elena-photo' // <--- ES: 'mariorossi/elena-photo'
+      },
   
   collections: {
     portfolio: collection({
